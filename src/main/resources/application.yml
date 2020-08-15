@@ -1,0 +1,16 @@
+micronaut:
+    application:
+        name: complete
+    security:
+        authentication: idtoken
+        oauth2:
+            clients:
+                cognito:
+                    client-id: '${OAUTH_CLIENT_ID}'
+                    client-secret: '${OAUTH_CLIENT_SECRET}'
+                    scopes: 'email openid'
+                    openid:
+                        issuer: 'https://cognito-idp.${COGNITO_REGION}.amazonaws.com/${COGNITO_POOL_ID}/'
+        endpoints:
+            logout:
+                get-allowed: true
